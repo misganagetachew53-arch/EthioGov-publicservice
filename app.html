@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment - EthioGov Public Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 100px;
+            padding-top: 80px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #2D5F84 0%, #1E3A5F 100%);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            height: 50px;
+            width: 100%;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            background-color: #FFD700;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+        
+        .back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .page-title {
+            text-align: center;
+            color: #1E3A5F;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        
+        .appointment-form {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #1E3A5F;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #2D5F84;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background: #1E3A5F;
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: #666;
+        }
+        .file{
+            justify-content: center;
+            background-color: #ffaa33;
+            color: white;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: auto;
+            padding: 20px;
+        
+        }
+       .btn-confirm {
+    display: inline-block;
+    width: 100%;             /* full width */
+    text-align: center;
+    background-color: #2D5F84;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    text-decoration: none;   /* remove underline */
+    transition: background 0.3s, transform 0.2s;
+    cursor: pointer;
+}
+
+.btn-confirm:hover {
+    background-color: #1E3A5F;
+    transform: scale(1.03); /* slight zoom on hover */
+}
+
+        .form-footer a {
+            color: #2D5F84;
+            text-decoration: none;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1E3A5F;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-nav a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .footer-nav i {
+            font-size: 1.5rem;
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .appointment-form {
+                padding: 1.5rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .form-row .form-group {
+                min-width: 100%;
+            }
+            
+            .footer-nav {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem;
+            }
+            
+            main {
+                padding: 1rem;
+            }
+            
+            .appointment-form {
+                padding: 1rem;
+            }
+            
+            .logo-text {
+                font-size: 1rem;
+            }
+            
+            .back-btn span {
+                display: none;
+            }
+            
+            .back-btn {
+                padding: 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <div class="logo-img">EG</div>
+            <div class="logo-text">EthioGov Public Service</div>
+        </div>
+        <button class="back-btn" onclick="window.history.back()">
+            <i class="fas fa-arrow-left"></i>
+            <span>Back</span>
+        </button>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <h1 class="page-title">Book an Appointment</h1>
+        
+        <form class="appointment-form" id="appointmentForm" action="http:payton">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" placeholder="Enter your email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subCity">Sub-City</label>
+                    <select id="subCity" class="form-control" required>
+                        <option value="">Select Sub-City</option>
+                        <option value="adda">Addis Ketema</option>
+                        <option value="akaky">Akaky Kaliti</option>
+                        <option value="arada">Arada</option>
+                        <option value="bole">Bole</option>
+                        <option value="gulele">Gulele</option>
+                        <option value="kirkos">Kirkos</option>
+                        <option value="kolfe">Kolfe Keranio</option>
+                        <option value="lideta">Lideta</option>
+                        <option value="nifas">Nifas Silk-Lafto</option>
+                        <option value="yeka">Yeka</option>
+                        <option value="lembu">Lemi Kura</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="woreda">Woreda</label>
+                <input type="text" id="woreda" class="form-control" placeholder="Enter your woreda">
+            </div>
+            
+            <div class="form-group">
+                <label for="service">Service Type</label>
+                <select id="service" class="form-control" required>
+                    <option value="">Select Service</option>
+                    <option value="health">Health Office</option>
+                    <option value="transport">Transport Office</option>
+                    <option value="land">Land Administration Office</option>
+                    <option value="finance">Finance Office</option>
+                    <option value="trade">Trade Office</option>
+                    <option value="tax">Tax Office</option>
+                    <option value="education">Education Office</option>
+                    <option value="immigration">Immigration Office</option>
+                    <option value="civil">Civil Registration</option>
+                    <option value="utility">kabale</option>
+                </select>
+            </div>
+            
+          <div class="file">
+    <label for="pdffile" class="file">Upload your document (PDF)</label>
+    <input type="file" id="pdffile" name="pdffile" accept="application/pdf" required style="display:none;"> <br><br>
+
+    <label for="photo" class="file">Choose your photo</label>
+    <input type="file" id="photo" name="customerphoto" accept="image/*" required style="display:none;">
+
+    <!-- Preview the selected photo -->
+    <img id="preview" alt="Photo Preview" style="margin-top:10px; max-width:200px; display:none;">
+</div>
+
+               
+            </div>
+            
+            <div class="form-group">
+                <label for="notes">Additional Notes</label>
+                <textarea id="notes" class="form-control" rows="3" placeholder="Any additional information"></textarea>
+            </div>
+            
+          <div class="form-group" id="cof">
+    <a href="conf.html" class="btn-confirm">Confirm Appointment</a>
+</div>
+
+
+            </div>
+            
+            <div class="form-footer">
+                <p>Need help? <a href="#">Contact our support team</a></p>
+            </div>
+        </form>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-nav">
+            <a href="index.html">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="recent.html">
+                <i class="fas fa-history"></i>
+                <span>Recent</span>
+            </a>
+            <a href="app.html">
+                <i class="fas fa-calendar"></i>
+                <span>Appointments</span>
+            </a>
+            <a href="profile.html">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+           
+        </div>
+        <div class="copyright">
+            &copy; 2023 EthioGov Public Service Portal. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Set minimum date to today
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        let mm = today.getMonth() + 1;
+        let dd = today.getDate();
+        
+        if (dd < 10) dd = '0' + dd;
+        if (mm < 10) mm = '0' + mm;
+        
+        const formattedToday = `${yyyy}-${mm}-${dd}`;
+        document.getElementById('date').setAttribute('min', formattedToday);
+       const input = document.getElementById('photo');
+const preview = document.getElementById('preview');
+
+input.addEventListener('change', () => {
+    if (input.files && input.files[0]) {
+        preview.src = URL.createObjectURL(input.files[0]);
+        preview.style.display = "block";
+    }
+});
+document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Get form values
+    const appointmentData = {
+        fullName: document.getElementById('fullName').value,
+        phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value,
+        subCity: document.getElementById('subCity').value,
+        woreda: document.getElementById('woreda').value,
+        service: document.getElementById('service').options[document.getElementById('service').selectedIndex].text,
+        notes: document.getElementById('notes').value
+    };
+
+    // Save to sessionStorage (data cleared when browser closes)
+    sessionStorage.setItem('appointmentData', JSON.stringify(appointmentData));
+
+    // Redirect to conf.html
+    window.location.href = 'conf.html';
+});
+
+
+        // Form submission
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const fullName = document.getElementById('fullName').value;
+            const service = document.getElementById('service').options[document.getElementById('service').selectedIndex].text;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            
+            // Format date for display
+            const appointmentDate = new Date(date);
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = appointmentDate.toLocaleDateString('en-US', options);
+            
+            // Show confirmation message
+            alert(`Thank you, ${fullName}! Your appointment with the ${service} has been scheduled for ${formattedDate} at ${time}.`);
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>

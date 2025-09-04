@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Services & Features</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    header {
+      text-align: center;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      padding: 30px 20px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .feature-card i {
+      font-size: 40px;
+      color: #6a11cb;
+      margin-bottom: 15px;
+      display: block;
+      text-align: center;
+    }
+
+    .feature-card h3 {
+      font-size: 1.2rem;
+      text-align: center;
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: #555;
+      text-align: center;
+      line-height: 1.5;
+    }
+        footer {
+            background: #1E3A5F;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-nav a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .footer-nav i {
+            font-size: 1.5rem;
+        }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.6rem;
+      }
+       .footer-nav {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Welcome to EthioGov Public Service App</h1>
+      <p>Our app helps you access services and information from your home, quickly and securely.</p>
+    </header>
+
+    <div class="features">
+      <div class="feature-card">
+        <i class="fas fa-calendar-check"></i>
+        <h3>Book Appointments</h3>
+        <p>Request and schedule appointments for services at your preferred subcity office, all from the comfort of your home.</p>
+      </div>
+
+      <div class="feature-card">
+        <i class="fas fa-newspaper"></i>
+        <h3>Get Information & News</h3>
+        <p>Stay updated with news and announcements from your subcity and the offices you care about.</p>
+      </div>
+
+      <div class="feature-card">
+        <i class="fas fa-file-alt"></i>
+        <h3>Access Documents</h3>
+        <p>Download official documents securely, including forms, reports, and guidelines relevant to your services.</p>
+      </div>
+
+      <div class="feature-card">
+        <i class="fas fa-user-shield"></i>
+        <h3>Secure & Easy to Use</h3>
+        <p>Your information and service requests are safe, and the interface is designed for a smooth, user-friendly experience.</p>
+      </div>
+    </div>
+  </div>
+   <!-- Footer -->
+    <footer>
+        <div class="footer-nav">
+            <a href="index.html">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="recent.html">
+                <i class="fas fa-history"></i>
+                <span>Recent</span>
+            </a>
+            <a href="appoint.html">
+                <i class="fas fa-calendar"></i>
+                <span>Appointments</span>
+            </a>
+            <a href="#">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+                    <div class="copyright">
+            &copy; 2023 EthioGov Public Service Portal. All rights reserved.
+        </div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - EthioGov Public Service</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+body {
+  background: linear-gradient(135deg, #2D5F84, #1E3A5F);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.login-container {
+  background: white;
+  color: #333;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+h2 { text-align:center; margin-bottom:1.5rem; color:#1E3A5F; }
+
+.form-group { margin-bottom:1.2rem; }
+label { display:block; font-weight:bold; margin-bottom:0.3rem; }
+input { width:100%; padding:0.7rem; border:1px solid #ccc; border-radius:6px; font-size:1rem; }
+
+.btn {
+  width:100%;
+  background:#2D5F84;
+  color:white;
+  padding:0.8rem;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:1rem;
+  transition: background 0.3s;
+}
+.btn:hover { background:#1E3A5F; }
+
+.message { margin-top:1rem; text-align:center; font-weight:bold; }
+.link { text-align:center; margin-top:1rem; }
+.link a { color:#2D5F84; text-decoration:none; }
+
+/* Footer */
+footer {
+  background: #1E3A5F;
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-nav a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-nav i {
+  font-size: 1.5rem;
+}
+
+.copyright {
+  margin-top: 1.5rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 768px) {
+  .footer-nav { flex-wrap: wrap; gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+  <div class="login-container">
+    <h2>Login</h2>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" required>
+    </div>
+    <button type="button" class="btn" onclick="login()">Login</button>
+    <p class="message" id="message"></p>
+    <div class="link">
+      <p>Don't have an account? <a href="signup.html">Register here</a></p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-nav">
+    <a href="index.html">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </a>
+    <a href="recent.html">
+      <i class="fas fa-history"></i>
+      <span>Recent</span>
+    </a>
+    <a href="appoint.html">
+      <i class="fas fa-calendar"></i>
+      <span>Appointments</span>
+    </a>
+    <a href="profile.html">
+      <i class="fas fa-user"></i>
+      <span>Profile</span>
+    </a>
+  </div>
+  <div class="copyright">
+    &copy; 2023 EthioGov Public Service Portal. All rights reserved.
+  </div>
+</footer>
+
+<script>
+const users = JSON.parse(localStorage.getItem("users")) || [];
+
+function login() {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const message = document.getElementById("message");
+
+  if(!email || !password){
+    message.style.color = "red";
+    message.textContent = "❌ All fields are required!";
+    return;
+  }
+
+  const user = users.find(u => u.email === email && u.password === password);
+
+  if(user){
+    message.style.color = "green";
+    message.textContent = "✅ Login successful!";
+    localStorage.setItem("loggedInUser", JSON.stringify(user));
+    setTimeout(()=>{ window.location.href = "profile.html"; }, 1500);
+  } else {
+    message.style.color = "red";
+    message.textContent = "❌ Account not found. Please register.";
+  }
+}
+</script>
+
+</body>
+</html>
