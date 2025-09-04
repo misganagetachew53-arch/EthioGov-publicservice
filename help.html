@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center - Document Access Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .help-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+        
+        .main-content {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .sidebar {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            height: fit-content;
+        }
+        
+        h2 {
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        h3 {
+            color: #6a11cb;
+            margin: 25px 0 15px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .step {
+            display: flex;
+          
+            margin-bottom: 25px;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            background: #6a11cb;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .screenshot {
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .screenshot-placeholder {
+            height: 200px;
+            background: linear-gradient(135deg, #6a89cc 0%, #4a69bd 100%);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .faq-question:before {
+            content: "Q: ";
+            color: #6a11cb;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        
+        .faq-answer {
+            color: #666;
+        }
+        
+        .faq-answer:before {
+            content: "A: ";
+            color: #6a11cb;
+            font-weight: bold;
+        }
+        
+        .quick-links {
+            list-style: none;
+        }
+        
+        .quick-links li {
+            margin-bottom: 12px;
+        }
+        
+        .quick-links a {
+            color: #6a11cb;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+        
+        .quick-links a:hover {
+            color: #2575fc;
+            text-decoration: underline;
+        }
+        
+        .quick-links a:before {
+            content: "•";
+            margin-right: 8px;
+            color: #6a11cb;
+        }
+        
+        .contact-info {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .contact-info h3 {
+            margin-top: 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #6a11cb;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background: #5710a3;
+        }
+         footer {
+            background: #1E3A5F;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-nav a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .footer-nav i {
+            font-size: 1.5rem;
+        }
+        @media (max-width: 768px) {
+            .help-content {
+                grid-template-columns: 1fr;
+            }
+             .footer-nav {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Help Center</h1>
+            <p class="description">Learn how to use the Document Access Portal effectively</p>
+        </header>
+        
+        <div class="help-content">
+            <div class="main-content">
+                <h2>How to Use the Document Access Portal</h2>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Select Your Subcity</h3>
+                        <p>First, choose your subcity from the dropdown menu. The system offers 11 different subcity options to choose from.</p>
+                       
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Select Your Office</h3>
+                        <p>After selecting your subcity, choose your office location from the office dropdown menu.</p>
+                        
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Access Documents</h3>
+                        <p>Once you've selected both your subcity and office, the available documents will automatically load. You can then click on any document to view or download it.</p>
+                       
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Viewing Documents</h3>
+                        
+                    </div>
+                </div>
+                
+                <h2>Frequently Asked Questions</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Why can't I see any documents after selecting my subcity and office?</div>
+                    <div class="faq-answer">If no documents appear, it could mean that there are no documents currently available for your selected subcity and office combination. Please contact your administrator if you believe this is an error.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Can I download documents instead of viewing them in the browser?</div>
+                    <div class="faq-answer">Yes, when the PDF opens in your browser, you can use the download button (usually represented by a downward arrow) in the PDF viewer to save the document to your device.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What should I do if I select the wrong subcity or office?</div>
+                    <div class="faq-answer">Simply go back to the dropdown menus and select the correct options. The document list will automatically update based on your new selection.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Why do I need to select both subcity and office?</div>
+                    <div class="faq-answer">Some documents are specific to certain offices within subcities. Selecting both ensures you see all documents relevant to your location.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How often are new documents added?</div>
+                    <div class="faq-answer">New documents are added regularly by administrators. Check back frequently for updates or contact your office administrator for information about update schedules.</div>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <h2>Quick Links</h2>
+                <ul class="quick-links">
+                    <li><a href="#">Getting Started Guide</a></li>
+                    <li><a href="#">Troubleshooting Common Issues</a></li>
+                    <li><a href="#">Document Types and Formats</a></li>
+                    <li><a href="#">Mobile Access Guide</a></li>
+                    <li><a href="#">How to Request New Documents</a></li>
+                    <li><a href="#">User Account Management</a></li>
+                    <li><a href="#">Privacy and Security Information</a></li>
+                </ul>
+                
+                <div class="contact-info">
+                    <h3>Need More Help?</h3>
+                    <a href="#" class="btn">Contact Support</a>
+                </div>
+            </div>
+        </div>
+    </div>
+     <footer>
+        <div class="footer-nav">
+            <a href="index.html">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="recent.html">
+                <i class="fas fa-history"></i>
+                <span>Recent</span>
+            </a>
+            <a href="app.html">
+                <i class="fas fa-calendar"></i>
+                <span>Appointments</span>
+            </a>
+            <a href="#">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+            
+        </div>
+        <div class="copyright">
+            &copy; 2023 EthioGov Public Service Portal. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Simple interaction for demonstration
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+                });
+            });
+            
+            // Smooth scrolling for quick links
+            document.querySelectorAll('.quick-links a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('In a real application, this would scroll to the relevant section.');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

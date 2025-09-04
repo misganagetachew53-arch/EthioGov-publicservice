@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - EthioGov Public Service</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f5f5f5;
+  color: #333;
+}
+
+/* Header */
+header {
+  background: linear-gradient(135deg, #2D5F84 0%, #1E3A5F 100%);
+  color: white;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  width: 40px;
+  height: 40px;
+  background: #FFD700;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.logo-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.back-btn {
+  background: rgba(255,255,255,0.2);
+  border:none;
+  color:white;
+  padding:0.3rem 0.8rem;
+  border-radius:5px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+
+.back-btn:hover { background: rgba(255,255,255,0.3); }
+
+/* Main content */
+main {
+  flex: 1;
+  margin-top: 60px; /* header height */
+  padding: 2rem;
+  max-width: 1000px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-title {
+  font-size: 2rem;
+  color: #1E3A5F;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.notifications-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.notification-card {
+  background: white;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.notification-title {
+  font-weight: bold;
+  color: #1E3A5F;
+}
+
+.notification-date {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.empty-icon {
+  font-size: 3rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+  background: #1E3A5F;
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-top: auto;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-nav a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-nav i { font-size: 1.5rem; }
+
+.copyright {
+  color: rgba(255,255,255,0.7);
+}
+
+@media(max-width:768px){
+  .footer-nav { flex-wrap: wrap; gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-img">EG</div>
+    <div class="logo-text">EthioGov Public Service</div>
+  </div>
+  <button class="back-btn" onclick="window.history.back()">
+    <i class="fas fa-arrow-left"></i> Back
+  </button>
+</header>
+
+<main>
+  <h1 class="page-title">Dashboard</h1>
+  <div class="notifications-container" id="notificationsContainer">
+    <div class="empty-state">
+        <h1 class="page-title">Dashboard</h1>
+  <div id="notificationsContainer"></div>
+      <div class="empty-icon"><i class="fas fa-inbox"></i></div>
+      <h3>No messages yet</h3>
+      <p>You have no new notifications</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-nav">
+    <a href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
+    <a href="recent.html"><i class="fas fa-history"></i><span>Recent</span></a>
+    <a href="app.html"><i class="fas fa-calendar"></i><span>Appointments</span></a>
+    <a href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a>
+  </div>
+  <div class="copyright">
+    &copy; 2023 EthioGov Public Service Portal. All rights reserved.
+  </div>
+</footer>
+<script>
+  // Function to fetch notifications from server
+  function fetchNotifications() {
+    const container = document.getElementById('notificationsContainer');
+    container.innerHTML = `
+      <div class="empty-state">
+        <div class="spinner"><i class="fas fa-spinner fa-spin fa-2x"></i></div>
+        <h3>Loading notifications...</h3>
+      </div>
+    `;
+
+    fetch('https://yourserver.com/api/notifications') // <-- Replace with your server URL
+      .then(response => response.json())
+      .then(notifications => {
+        container.innerHTML = '';
+        if (notifications.length === 0) {
+          container.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-icon"><i class="fas fa-inbox"></i></div>
+              <h3>No messages yet</h3>
+              <p>You have no new notifications</p>
+            </div>
+          `;
+        } else {
+          notifications.forEach(n => {
+            const card = document.createElement('div');
+            card.className = 'notification-card';
+            card.innerHTML = `
+              <div class="notification-title">${n.title}</div>
+              <div class="notification-date">${n.date}</div>
+            `;
+            container.appendChild(card);
+          });
+        }
+      })
+      .catch(err => {
+        container.innerHTML = `
+          <div class="empty-state">
+            <h3>Error fetching notifications</h3>
+            <p>${err}</p>
+          </div>
+        `;
+        console.error(err);
+      });
+  }
+
+  // Call it when page loads
+  document.addEventListener('DOMContentLoaded', fetchNotifications);
+</script>
+
+</body>
+</html>

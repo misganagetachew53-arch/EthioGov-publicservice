@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local News - EthioGov Public Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding-bottom: 120px;
+             padding-top: 50px;      /* Equal to header height */
+   font-family: 'segoe UI';
+
+        }
+        
+    html, body{
+         height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    }
+
+header {
+    background: linear-gradient(135deg, #2D5F84 0%, #1E3A5F 100%);
+    color: white;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 1000;
+}
+
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            background-color: #FFD700;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+            padding-top: 70px;
+        }
+        
+        .page-title {
+            text-align: center;
+            color: #1E3A5F;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        
+        .subcity-selector {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .selector-title {
+            font-size: 1.2rem;
+            color: #1E3A5F;
+            margin-bottom: 1rem;
+        }
+          main{
+            flex: 1;
+          }
+        .selector-form {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .form-control {
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            min-width: 200px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #2D5F84;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background: #1E3A5F;
+        }
+        
+        .news-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .news-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1E3A5F;
+        }
+        
+        .news-date {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .news-subcity {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: #E3F2FD;
+            color: #1565C0;
+        }
+        
+        .news-content {
+            line-height: 1.6;
+        }
+        
+        .news-image {
+            width: 100%;
+            border-radius: 8px;
+            margin: 1rem 0;
+            max-height: 300px;
+            object-fit: cover;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .empty-icon {
+            font-size: 3rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+        
+        .empty-text {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .loading-state {
+            text-align: center;
+            padding: 3rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #2D5F84;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1.5rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Footer */
+       footer {
+    background: #1E3A5F;
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+  
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+        
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-nav a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .footer-nav i {
+            font-size: 1.5rem;
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .selector-form {
+                flex-direction: column;
+            }
+            
+            .form-control {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .footer-nav {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem;
+            }
+            
+            main {
+                padding: 1rem;
+            }
+            
+            .logo-text {
+                font-size: 1rem;
+            }
+            
+            .back-btn span {
+                display: none;
+            }
+            
+            .back-btn {
+                padding: 0.6rem;
+            }
+            
+            .news-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <div class="logo-img">EG</div>
+            <div class="logo-text">EthioGov Public Service</div>
+        </div>
+        <button class="back-btn" onclick="window.history.back()">
+            <i class="fas fa-arrow-left"></i>
+            <span>Back</span>
+        </button>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <h1 class="page-title">Local News & Updates</h1>
+        
+        <div class="subcity-selector">
+            <h2 class="selector-title">Select Your Sub-City to View Local News</h2>
+            <form class="selector-form" id="subcityForm">
+                <select class="form-control" id="subCity" required>
+                    <option value="">Select Sub-City</option>
+                    <option value="adda">Addis Ketema</option>
+                    <option value="akaky">Akaky Kaliti</option>
+                    <option value="arada">Arada</option>
+                    <option value="bole">Bole</option>
+                    <option value="gulele">Gulele</option>
+                    <option value="kirkos">Kirkos</option>
+                    <option value="kolfe">Kolfe Keranio</option>
+                    <option value="lideta">Lideta</option>
+                    <option value="nifas">Nifas Silk-Lafto</option>
+                    <option value="yeka">Yeka</option>
+                    <option value="lembu">Lemi Kura</option>
+                </select>
+                  <div class="form-group">
+                <label for="service">Service Type</label>
+                <select id="service" class="form-control" required>
+                    <option value="">Select Service</option>
+                    <option value="health">Health Office</option>
+                    <option value="transport">Transport Office</option>
+                    <option value="land">Land Administration Office</option>
+                    <option value="finance">Finance Office</option>
+                    <option value="trade">Trade Office</option>
+                    <option value="tax">Tax Office</option>
+                    <option value="education">Education Office</option>
+                    <option value="immigration">Immigration Office</option>
+                    <option value="civil">Civil Registration</option>
+                    <option value="utility">Utility Services</option>
+                </select>
+            </div>
+         
+                   <button type="submit" class="btn">
+                    <i class="fas fa-newspaper"></i> Get News
+                </button>
+            </form>
+        </div>
+        
+        <div class="news-container" id="newsContainer">
+            <div class="empty-state">
+                <div class="empty-icon">
+                    <i class="far fa-newspaper"></i>
+                </div>
+                <h3 class="empty-text">Select your sub-city to view local news</h3>
+                <p>Stay updated with the latest information from your area</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-nav">
+            <a href="index.html">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="recent.html">
+                <i class="fas fa-history"></i>
+                <span>Recent</span>
+            </a>
+            <a href="appointment.html">
+                <i class="fas fa-calendar"></i>
+                <span>Appointments</span>
+            </a>
+            <a href="profile.html">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+           
+        </div>
+        <div class="copyright">
+            &copy; 2023 EthioGov Public Service Portal. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Function to format date for display
+        function formatDisplayDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        // Function to render news items
+        function renderNews(newsItems, subCityName) {
+            const container = document.getElementById('newsContainer');
+            
+            if (!newsItems || newsItems.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">
+                            <i class="far fa-newspaper"></i>
+                        </div>
+                        <h3 class="empty-text">No news available for ${subCityName}</h3>
+                        <p>Please check back later for updates from your area</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            newsItems.forEach(news => {
+                const card = document.createElement('div');
+                card.className = 'news-card';
+                card.innerHTML = `
+                    <div class="news-header">
+                        <h3 class="news-title">${news.title}</h3>
+                        <div>
+                            <span class="news-date">${formatDisplayDate(news.date)}</span>
+                            <span class="news-subcity">${news.subCity}</span>
+                        </div>
+                    </div>
+                    
+                    ${news.image ? `<img src="${news.image}" alt="${news.title}" class="news-image">` : ''}
+                    
+                    <div class="news-content">
+                        <p>${news.content}</p>
+                    </div>
+                    
+                    ${news.link ? `<a href="${news.link}" class="btn">Read More</a>` : ''}
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+        
+        // Function to show loading state
+        function showLoading() {
+            const container = document.getElementById('newsContainer');
+            container.innerHTML = `
+                <div class="loading-state">
+                    <div class="spinner"></div>
+                    <h3>Loading news...</h3>
+                </div>
+            `;
+        }
+        
+        // Function to fetch news from server based on sub-city
+        function fetchNewsFromServer(subCity) {
+            // In a real application, this would be an API endpoint
+            // For demonstration, we'll use a setTimeout to simulate network delay
+            
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    // Get the selected sub-city name
+                    const subCitySelect = document.getElementById('subCity');
+                    const subCityName = subCitySelect.options[subCitySelect.selectedIndex].text;
+                    
+                    // Simulate different responses randomly
+                    const hasNews = Math.random() > 0.3;
+                    
+                    if (hasNews) {
+                        // Simulated server response with news items
+                        const newsItems = [
+                            {
+                                title: "New Health Center Opening in " + subCityName,
+                                date: "2023-10-15",
+                                subCity: subCityName,
+                                content: "The government has announced the opening of a new health center in " + subCityName + " to serve the growing population. The facility will provide basic healthcare services and emergency care.",
+                                image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                                link: "#"
+                            },
+                            {
+                                title: "Road Maintenance Scheduled for Next Week",
+                                date: "2023-10-12",
+                                subCity: subCityName,
+                                content: "The " + subCityName + " administration has announced road maintenance work on major roads starting next week. Residents are advised to use alternative routes during this period.",
+                                image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                                link: "#"
+                            },
+                            {
+                                title: "Public Meeting on Urban Development",
+                                date: "2023-10-08",
+                                subCity: subCityName,
+                                content: "A public meeting will be held next Thursday to discuss urban development plans for " + subCityName + ". All residents are invited to participate and share their opinions.",
+                                image: "https://images.unsplash.com/photo-1517502884422-41eaead166d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                                link: "#"
+                            }
+                        ];
+                        resolve(newsItems);
+                    } else {
+                        // Simulated server response with no news
+                        resolve([]);
+                    }
+                }, 1500); // Simulate network delay
+            });
+        }
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up event listener for the form
+            document.getElementById('subcityForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const subCity = document.getElementById('subCity').value;
+                
+                if (!subCity) {
+                    alert('Please select a sub-city');
+                    return;
+                }
+                
+                showLoading();
+                
+                // Fetch news from server
+                fetchNewsFromServer(subCity)
+                    .then(newsItems => {
+                        const subCitySelect = document.getElementById('subCity');
+                        const subCityName = subCitySelect.options[subCitySelect.selectedIndex].text;
+                        renderNews(newsItems, subCityName);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching news:', error);
+                        document.getElementById('newsContainer').innerHTML = `
+                            <div class="empty-state">
+                                <div class="empty-icon">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <h3 class="empty-text">Error loading news</h3>
+                                <p>Please try again later.</p>
+                                <button class="btn" onclick="window.location.reload()">Retry</button>
+                            </div>
+                        `;
+                    });
+            });
+        });
+    </script>
+</body>
+</html>

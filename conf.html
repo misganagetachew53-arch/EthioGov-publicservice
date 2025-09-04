@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Appointment</title>
+    <style>
+        body { font-family: Arial; padding: 2rem; background: #f5f5f5; }
+        .card { background: white; padding: 2rem; border-radius: 10px; max-width: 500px; margin: auto; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        h2 { text-align: center; color: #2D5F84; }
+        p { margin: 0.5rem 0; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Appointment Confirmation</h2>
+        <p id="fullName"></p>
+        <p id="phone"></p>
+        <p id="email"></p>
+        <p id="subCity"></p>
+        <p id="woreda"></p>
+        <p id="service"></p>
+        <p id="notes"></p>
+    </div>
+
+    <script>
+        // Get the stored data
+        const data = JSON.parse(sessionStorage.getItem('appointmentData'));
+
+        if(data) {
+            document.getElementById('fullName').textContent = "Full Name: " + data.fullName;
+            document.getElementById('phone').textContent = "Phone: " + data.phone;
+            document.getElementById('email').textContent = "Email: " + data.email;
+            document.getElementById('subCity').textContent = "Sub-City: " + data.subCity;
+            document.getElementById('woreda').textContent = "Woreda: " + data.woreda;
+            document.getElementById('service').textContent = "Service: " + data.service;
+            document.getElementById('notes').textContent = "Notes: " + data.notes;
+        } else {
+            document.body.innerHTML = "<p>No appointment data found.</p>";
+        }
+    </script>
+</body>
+</html>
